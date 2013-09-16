@@ -65,4 +65,8 @@ class Illuminate.View extends Backbone.View
 
 		navigator.geolocation.getCurrentPosition cb
 
-	_setColor: (model) -> $(document.body).css { backgroundColor: model.get("color") }
+	_setColor: (model) ->
+		$BODY = $(document.body)
+
+		$BODY.toggleClass "day", model.get("elevation") >= 0
+		$BODY.css { backgroundColor: model.get("color") }
