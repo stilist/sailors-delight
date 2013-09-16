@@ -1,0 +1,19 @@
+body {background-color:#000; color:#fff; margin:0; overflow:hidden;}
+#equator,
+#sun,
+#sunrise_marker,
+#sunset_marker,
+.past_sun {display:block; position:absolute;}
+#equator,
+#sunrise_marker,
+#sunset_marker {background-color:rgba(255, 255, 255, 0.5); box-shadow:0 0 1px rgba(0, 0, 0, 0.25); top:50%;}
+#equator {height:1px; left:0; right:0; z-index:2;}
+#sunrise_marker,
+#sunset_marker {height:10px; margin-top:-5px; width:1px; z-index:4;}
+#sun,
+#sunrise_marker,
+#sunset_marker {left:-50px;}
+#sun,
+.past_sun {border-radius:50%;}
+#sun {background-color:#fc0; box-shadow:0 0 1px rgba(0, 0, 0, 0.5); height:10px; margin-left:-5px; margin-top:-5px; width:10px; z-index:5;}
+.past_sun {background-color:#fff; height:4px; margin-left:-2px; margin-top:-2px; width:4px; z-index:3;}
