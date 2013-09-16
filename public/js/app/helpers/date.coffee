@@ -57,9 +57,9 @@ Date::getAzimuthAndElevation or= (φ, λ) ->
 	ζ_s = ζ - refraction_correction
 
 	α_output = floor(α * 100 + 0.5) / 100
-	elevation_output = floor((90 - ζ_s) * 100 + 0.5) / 100
+	γ_output = floor((90 - ζ_s) * 100 + 0.5) / 100
 
-	[α_output, elevation_output]
+	[α_output, γ_output]
 
 Date::getDayOfYearFromJulianDate or= (jd) ->
 	z = floor(jd + 0.5)
