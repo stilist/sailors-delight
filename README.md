@@ -2,7 +2,7 @@ Loosely inspired by projects like
 [lookingatsomething.com](http://lookingatsomething.com/) and a long-standing
 interest in representing time on the screen.
 
-[Live demo](http://static.ratafia.info.s3.amazonaws.com/sailors_delight/index.html).
+[Live demo](http://static.ratafia.info/sailors_delight/index.html).
 
 Run it with [pow](http://pow.cx):
 
