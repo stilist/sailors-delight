@@ -23,8 +23,6 @@ class Illuminate.View extends Backbone.View
 
 		@_getGeolocation()
 
-		@stickit()
-
 		@
 
 	_positionSun: (model) ->
