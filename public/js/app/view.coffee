@@ -18,7 +18,7 @@ class Illuminate.View extends Backbone.View
 
 		setInterval =>
 			@model.set "timestamp", new Date()
-		, (1000 * 5)
+		, (1000 * 60)
 		@model.set "timestamp", new Date()
 
 		@_getGeolocation()
