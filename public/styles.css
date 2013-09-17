@@ -16,8 +16,9 @@ body {background-color:#000; color:#fff; margin:0; overflow:hidden;}
 #sun,
 .past_sun {border-radius:50%;}
 #sun {background-color:#fc0; box-shadow:0 0 1px rgba(0, 0, 0, 0.5); height:10px; margin-left:-5px; margin-top:-5px; width:10px; z-index:5;}
-.past_sun {background-color:rgba(255, 255, 255, 0.5); height:4px; margin-left:-2px; margin-top:-2px; width:4px; z-index:3;}
+.past_sun {background-color:rgba(255, 255, 255, 0.25); height:2px; margin-left:-1px; margin-top:-1px; width:2px; z-index:3;}
 
 .day #equator,
 .day #sunrise_marker,
-.day #sunset_marker {background-color:rgba(0, 0, 0, 0.25); box-shadow:none;}
+.day #sunset_marker,
+.day .past_sun {background-color:rgba(0, 0, 0, 0.25); box-shadow:none;}
