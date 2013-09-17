@@ -25,11 +25,26 @@ class Illuminate.Model extends Backbone.Model
 	_setColor: ->
 		elevation = @get "elevation"
 
-		color = if elevation >= 0 then "#dbe9ff"
-		else if -6 < elevation < 0 then "#87a4d3"
-		else if -12 < elevation < -6 then "#4773bb"
-		else if -18 < elevation < -12 then "#263e66"
-		else "#1f252d"
+		if elevation >= 0
+			color = "#dbe9ff"
+		else if elevation <= -18
+			color = "#1f252d"
+		else
+			if -6 < elevation < 0
+				bottom = "#dbe9ff"
+				top = "#87a4d3"
+				base = 0
+			else if -12 < elevation < -6
+				bottom = "#4773bb"
+				top = "#263e66"
+				base = -6
+			else if -18 < elevation < -12
+				bottom = "#263e66"
+				top = "#1f252d"
+				base = -12
+
+			pct = (elevation - base) / (base - 6)
+			color = Chromath.towards(bottom, top, pct).toHexString()
 
 		@set "color", color
 
