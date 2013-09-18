@@ -60,8 +60,16 @@ class Illuminate.View extends Backbone.View
 
 	_getGeolocation: ->
 		cb = (position) =>
+			coords = position.coords
 			for coord in ["lat", "long"]
-				@model.set coord, position.coords["#{coord}itude"]
+				@model.set coord, coords["#{coord}itude"]
+
+			lat_pct = 100 * (-coords.latitude / 180) + 50
+			lng_pct = 100 * (coords.longitude / 360) + 50
+
+			@$("#me").css
+				left: "#{lng_pct}%"
+				top: "#{lat_pct}%"
 
 		navigator.geolocation.getCurrentPosition cb
 
