@@ -2,8 +2,10 @@ body {background-color:#000; color:#fff; margin:0; overflow:hidden;}
 #equator,
 #me,
 #sun,
+#sunlight,
 #sunrise_marker,
 #sunset_marker,
+#sunset_mask,
 .past_sun {display:block; position:absolute;}
 #equator,
 #sunrise_marker,
@@ -21,8 +23,10 @@ body {background-color:#000; color:#fff; margin:0; overflow:hidden;}
 #me {background-color:#f00; height:4px; margin-left:-2px; margin-top:-2px; width:4px; z-index:5;}
 #sun {background-color:#fc0; box-shadow:0 0 1px rgba(0, 0, 0, 0.5); height:10px; margin-left:-5px; margin-top:-5px; width:10px; z-index:5;}
 .past_sun {background-color:rgba(255, 255, 255, 0.25); height:2px; margin-left:-1px; margin-top:-1px; width:2px; z-index:3;}
+#sunlight {z-index:2;}
+#sunset_mask {background-color:#000; bottom:0; left:0; top:50%; right:0; z-index:1;}
 
 .day #equator,
 .day #sunrise_marker,
 .day #sunset_marker,
-.day .past_sun {background-color:rgba(0, 0, 0, 0.25); box-shadow:none;}
+.day .past_sun {background-color:rgba(128, 128, 128, 0.75); box-shadow:none;}

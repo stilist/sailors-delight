@@ -5,10 +5,9 @@ class Illuminate.Model extends Backbone.Model
 		# Portland, OR
 		lat: 45.52
 		lng: -122.681944
+		timestamp: new Date()
 
 	initialize: ->
-		@set "timestamp", new Date()
-
 		@on "change:elevation", @_setColor
 		@on "change:lat change:lng change:timestamp", @_setAzimuthAndElevation
 		@on "change:lat change:lng change:timestamp", @_setSolarNoon

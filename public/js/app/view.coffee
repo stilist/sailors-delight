@@ -9,17 +9,18 @@ class Illuminate.View extends Backbone.View
 		@listenTo @model, "change:azimuth", @_positionSun
 		@listenTo @model, "change:sunrise change:sunset", @_positionTransitMarkers
 
-		@$sun = null
+		@$BODY = $(document.body)
+		@$sun = @$sunlight = null
 
 	render: ->
 		@$el.html @template
 
 		@$sun = @$("#sun")
+		@$sunlight = @$("#sunlight")
 
 		setInterval =>
-			@model.set "timestamp", new Date()
-		, (1000 * 60)
-		@model.set "timestamp", new Date()
+			@_updateTimestamp()
+		, 1000
 
 		@_getGeolocation()
 
@@ -42,6 +43,22 @@ class Illuminate.View extends Backbone.View
 			$past_sun = $("<span class='past_sun'></span>")
 			@$el.append $past_sun
 			$past_sun.css position
+
+			if elevation > -18
+				sun_top = $(window).height() * (elevation_pct / 100)
+				height_pct = elevation
+				height = $(window).height() * (height_pct / 100)
+
+				width_pct = 90 - elevation
+				left_pct = azimuth_pct - (width_pct / 2)
+
+				@$sunlight.show().css
+					height: "#{height_pct}%"
+					left: "#{left_pct}%"
+					top: sun_top - (height / 2)
+					width: "#{width_pct}%"
+			else
+				@$sunlight.hide()
 
 	_positionTransitMarkers: (model) ->
 		time = model.get "timestamp"
@@ -74,7 +91,27 @@ class Illuminate.View extends Backbone.View
 		navigator.geolocation.getCurrentPosition cb
 
 	_setColor: (model) ->
-		$BODY = $(document.body)
+		@$BODY.toggleClass "day", model.get("elevation") >= 0
 
-		$BODY.toggleClass "day", model.get("elevation") >= 0
-		$BODY.css { backgroundColor: model.get("color") }
+		bg_color = @model.get "color"
+
+		@$BODY.css { backgroundColor: bg_color }
+
+		azimuth = @model.get "azimuth"
+		elevation = @model.get "elevation"
+
+		if azimuth and elevation
+			lum = new CIELuminance @model.get("lng"), @model.get("lat"), azimuth, elevation
+			ratio = lum.getLuminanceRatio()
+
+			bg_colors = new Chromath(bg_color).toRGBArray()
+			sun_colors = bg_colors.map (c) -> Math.min Math.round(c * ratio), 255
+			sun_hex = new Chromath.rgb(sun_colors).toHexString()
+			gradient = "-webkit-radial-gradient(#{sun_hex}, rgba(0, 0, 0, 0) 70%)"
+
+			@$sunlight.css { backgroundImage: gradient }
+
+	_updateTimestamp: ->
+		now = @model.get "timestamp"
+
+		@model.set "timestamp", new Date()
