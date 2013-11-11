@@ -32,7 +32,7 @@ class Illuminate.View extends Backbone.View
 
 		if azimuth and elevation
 			azimuth_pct = (azimuth / 360) * 100
-			elevation_pct = 100 * (-elevation / 360) + 50
+			elevation_pct = 100 * (-elevation / 180) + 50
 
 			position =
 				left: "#{azimuth_pct}%"

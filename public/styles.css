@@ -26,7 +26,7 @@ body {background-color:#000; color:#fff; margin:0; overflow:hidden;}
 #sunlight {z-index:2;}
 #sunset_mask {background-color:#000; bottom:0; left:0; top:50%; right:0; z-index:1;}
 
-.day #equator,
+.day #equator {background-color:transparent; background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff); box-shadow:none; height:20%; top:30%;}
 .day #sunrise_marker,
 .day #sunset_marker,
 .day .past_sun {background-color:rgba(128, 128, 128, 0.75); box-shadow:none;}
